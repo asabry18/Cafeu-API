@@ -1,6 +1,9 @@
 const express = require('express')
 const mongoose = require('mongoose');
+
 const { getMenu } = require('./endpoints/menu/getMenu');
+
+// ourTeam endpoints functions
 const { getOurTeam } = require('./endpoints/team_members/getOurTeam');
 const { postOurTeam } = require('./endpoints/team_members/postOurTeam');
 const { deleteOurTeam } = require('./endpoints/team_members/deleteOurTeam');
