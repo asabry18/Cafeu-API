@@ -1,7 +1,10 @@
 const express = require('express')
 const mongoose = require('mongoose');
 
+// menu endpoints functions
 const { getMenu } = require('./endpoints/menu/getMenu');
+const { insertMenu } = require('./endpoints/menu/insertMenu');
+const { deleteMenu } = require('./endpoints/menu/deleteMenu');
 
 // ourTeam endpoints functions
 const { getOurTeam } = require('./endpoints/team_members/getOurTeam');
@@ -27,6 +30,8 @@ app.use(express.json());
 
 // Menu
 app.get('/menu', getMenu);
+app.post('/menu', insertMenu);
+app.delete('/menu', deleteMenu);
 
 
 // Team members
