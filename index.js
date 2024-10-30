@@ -19,6 +19,10 @@ const { getBlog } = require('./endpoints/blogs/getBlog');
 const { insertBlog } = require('./endpoints/blogs/insertBlog');
 const { deleteBlog } = require('./endpoints/blogs/deleteBlog');
 
+// authentication endpoints functions
+const { loginUser } = require('./endpoints/user/loginUser');
+const { registerUserAdmin } = require('./endpoints/user/registerUserAdmin');
+
 try {
     mongoose.connect('mongodb+srv://mohamedmahrous581:asabry11@cluster0.47xea.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
     console.log('Connected to DB');
@@ -28,7 +32,9 @@ try {
 
 const app = express()
 const port = 3001;
-app.use(cors()); 
+app.use(cors({
+  exposedHeaders: ['X-Auth-Token']
+}));
 
 app.use(express.json());
 app.use((req, res, next) => {
@@ -52,6 +58,10 @@ app.delete('/OurTeam/:id', deleteOurTeam);
 app.get('/blogs' , getBlog);
 app.post('/blogs' , insertBlog)
 app.delete('/blogs', deleteBlog)
+
+// Authentication
+app.post("/api/login", loginUser);
+app.post("/api/register", registerUserAdmin);
 
 
 app.listen(port, () => {
