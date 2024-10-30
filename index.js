@@ -1,5 +1,8 @@
 const express = require('express')
+const cors = require('cors');
 const mongoose = require('mongoose');
+
+
 
 // menu endpoints functions
 const { getMenu } = require('./endpoints/menu/getMenu');
@@ -25,6 +28,7 @@ try {
 
 const app = express()
 const port = 3001;
+app.use(cors()); 
 
 app.use(express.json());
 app.use((req, res, next) => {
@@ -48,6 +52,7 @@ app.delete('/OurTeam/:id', deleteOurTeam);
 app.get('/blogs' , getBlog);
 app.post('/blogs' , insertBlog)
 app.delete('/blogs', deleteBlog)
+
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)
