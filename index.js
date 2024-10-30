@@ -22,6 +22,7 @@ const { deleteBlog } = require('./endpoints/blogs/deleteBlog');
 // authentication endpoints functions
 const { loginUser } = require('./endpoints/user/loginUser');
 const { registerUserAdmin } = require('./endpoints/user/registerUserAdmin');
+const { verifyUserToken } = require('./endpoints/user/verifyUserToken');
 
 try {
     mongoose.connect('mongodb+srv://mohamedmahrous581:asabry11@cluster0.47xea.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
@@ -62,6 +63,7 @@ app.delete('/blogs', deleteBlog)
 // Authentication
 app.post("/api/login", loginUser);
 app.post("/api/register", registerUserAdmin);
+app.post("/api/verifyToken", verifyUserToken);
 
 
 app.listen(port, () => {
