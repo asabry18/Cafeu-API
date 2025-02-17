@@ -6,8 +6,8 @@ const getMenu = async (req, res) => {
     const items = await MenuItem.find();
     res.json(items);
   } catch (e) {
-    res.send('something went wrong while retrieving menu items');
+    res.send("something went wrong while retrieving menu items");
   }
-}
+};
 
 module.exports = { getMenu };
