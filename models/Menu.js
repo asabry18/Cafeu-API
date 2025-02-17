@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 const menuItemSchema = new Schema({
 	name: String,
 	price: Number,
+	description: String,
 	category: String,
-  imageUrl: String,
-  rating: Number
+	imageUrl: String
 });
 
 const MenuItem = mongoose.model("MenuItem", menuItemSchema);
