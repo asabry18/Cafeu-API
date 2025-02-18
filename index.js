@@ -21,14 +21,23 @@ const {
 } = require("./endpoints/Testimonial/deleteTestimonial");
 
 // reservation' endpoints functions
-const { getReservation } = require('./endpoints/reservation/getReservation');
-const { insertReservation } = require('./endpoints/reservation/insertReservation');
-const { deleteReservation } = require('./endpoints/reservation/deleteReservation');
+const { getReservation } = require("./endpoints/reservation/getReservation");
+const {
+  insertReservation,
+} = require("./endpoints/reservation/insertReservation");
+const {
+  deleteReservation,
+} = require("./endpoints/reservation/deleteReservation");
 
 // authentication endpoints functions
 const { loginUser } = require("./endpoints/user/loginUser");
 const { registerUserAdmin } = require("./endpoints/user/registerUserAdmin");
 const { verifyUserToken } = require("./endpoints/user/verifyUserToken");
+
+// contactUs
+const { getContact } = require("./endpoints/Contact/getContact");
+const { insertContact } = require("./endpoints/Contact/insertContact");
+const { deleteContact } = require("./endpoints/Contact/deleteContact");
 
 try {
   mongoose.connect(
@@ -67,15 +76,20 @@ app.get("/OurTeam", getOurTeam);
 app.post("/OurTeam", postOurTeam);
 app.delete("/OurTeam/:id", deleteOurTeam);
 
-// Blogs
+// Testimonial
 app.get("/testimonials", getTestimonial);
 app.post("/testimonials", insertTestimonial);
 app.delete("/testimonials/:id", deleteTestimonial);
 
 // reservation
-app.get('/reservation', getReservation);
-app.post('/reservation', insertReservation);
-app.delete('/reservation/:id', deleteReservation);
+app.get("/reservation", getReservation);
+app.post("/reservation", insertReservation);
+app.delete("/reservation/:id", deleteReservation);
+
+// Contact Us endpoints
+app.get("/contact-us", getContact);
+app.post("/contact-us", insertContact);
+app.delete("/contact-us/:id", deleteContact);
 
 // Authentication
 app.post("/api/login", loginUser);
