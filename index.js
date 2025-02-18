@@ -13,21 +13,13 @@ const { postOurTeam } = require("./endpoints/team_members/postOurTeam");
 const { deleteOurTeam } = require("./endpoints/team_members/deleteOurTeam");
 
 const { getTestimonial } = require("./endpoints/Testimonial/getTestimonial");
-const {
-  insertTestimonial,
-} = require("./endpoints/Testimonial/insertTestimonial");
-const {
-  deleteTestimonial,
-} = require("./endpoints/Testimonial/deleteTestimonial");
+const { insertTestimonial } = require("./endpoints/Testimonial/insertTestimonial");
+const { deleteTestimonial } = require("./endpoints/Testimonial/deleteTestimonial");
 
 // reservation' endpoints functions
 const { getReservation } = require("./endpoints/reservation/getReservation");
-const {
-  insertReservation,
-} = require("./endpoints/reservation/insertReservation");
-const {
-  deleteReservation,
-} = require("./endpoints/reservation/deleteReservation");
+const { insertReservation } = require("./endpoints/reservation/insertReservation");
+const { deleteReservation } = require("./endpoints/reservation/deleteReservation");
 
 // authentication endpoints functions
 const { loginUser } = require("./endpoints/user/loginUser");
