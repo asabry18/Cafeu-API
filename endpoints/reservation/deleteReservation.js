@@ -1,16 +1,24 @@
 const reservations = require("../../models/reservation");
 
-const deleteReservation = async(req,res)=>{
-    // receive reservation id to be deleted from user
-   const reservationId = req.body.id;
+const deleteReservation = async (req, res) => {
+  const reservationId = req.params.id;
 
-   try {
-        // delete reservation
-        const deleteRequest = await reservations.findByIdAndDelete(reservationId)
-        res.send('reservation has been deleted')
-   } catch (e) {
-        res.send('reservation has NOT been deleted')
-   }
-}
+  if (!reservationId) {
+    return res.status(400).json({ message: "Reservation ID is required." });
+  }
 
-module.exports = {deleteReservation}
+  try {
+    const reservation = await reservations.findById(reservationId);
+    if (!reservation) {
+      return res.status(404).json({ message: "Reservation not found." });
+    }
+
+    await reservations.findByIdAndDelete(reservationId);
+    res.status(200).json({ message: "Reservation has been deleted successfully." });
+  } catch (error) {
+    console.error("Error deleting reservation:", error);
+    res.status(500).json({ message: "Failed to delete reservation. Please try again." });
+  }
+};
+
+module.exports = { deleteReservation };
