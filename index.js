@@ -1,6 +1,12 @@
+<<<<<<< Updated upstream
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+=======
+const express = require('express')
+const cors = require('cors');
+const mongoose = require('mongoose');
+>>>>>>> Stashed changes
 
 // menu endpoints functions
 const { getMenu } = require("./endpoints/menu/getMenu");
@@ -19,6 +25,11 @@ const {
 const {
   deleteTestimonial,
 } = require("./endpoints/Testimonial/deleteTestimonial");
+
+// reservation' endpoints functions
+const { getReservation } = require('./endpoints/reservation/getReservation');
+const { insertReservation } = require('./endpoints/reservation/insertReservation');
+const { deleteReservation } = require('./endpoints/reservation/deleteReservation');
 
 // authentication endpoints functions
 const { loginUser } = require("./endpoints/user/loginUser");
@@ -53,9 +64,15 @@ app.use((req, res, next) => {
 });
 
 // Menu
+<<<<<<< Updated upstream
 app.get("/menu", getMenu);
 app.post("/menu", insertMenu);
 app.delete("/menu", deleteMenu);
+=======
+app.get('/menu', getMenu);
+app.post('/menu', insertMenu);
+app.delete('/menu', deleteMenu);
+>>>>>>> Stashed changes
 
 // Team members
 app.get("/OurTeam", getOurTeam);
@@ -66,6 +83,11 @@ app.delete("/OurTeam/:id", deleteOurTeam);
 app.get("/testimonials", getTestimonial);
 app.post("/testimonials", insertTestimonial);
 app.delete("/testimonials/:id", deleteTestimonial);
+
+// Menu
+app.get('/reservation', getReservation);
+app.post('/reservation', insertReservation);
+app.delete('/reservation', deleteReservation);
 
 // Authentication
 app.post("/api/login", loginUser);
