@@ -1,4 +1,4 @@
-const Team = require('../../models/Teams');
+const Team = require('../../../models/Teams');
 
 const deleteOurTeam = async (req, res) => {
     try {

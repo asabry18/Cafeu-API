@@ -1,4 +1,4 @@
-const MenuItem = require("../../models/Menu");
+const MenuItem = require("../../../models/Menu");
 
 const insertMenu = async (req, res) => {
   try {

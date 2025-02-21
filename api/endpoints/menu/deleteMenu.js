@@ -1,4 +1,4 @@
-const MenuItem = require("../../models/Menu");
+const MenuItem = require("../../../models/Menu");
 
 const deleteMenu = async (req, res) => {
   try {

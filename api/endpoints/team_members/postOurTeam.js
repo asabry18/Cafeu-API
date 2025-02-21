@@ -1,4 +1,4 @@
-const Team = require('../../models/Teams');
+const Team = require('../../../models/Teams');
 
 const postOurTeam = async (req, res) => {
     try {
