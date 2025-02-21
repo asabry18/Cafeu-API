@@ -1,4 +1,4 @@
-const { User, handleUserValidation } = require("../../models/user");
+const { User, handleUserValidation } = require("../../../models/user");
 const bcrypt = require('bcrypt');
 const _ = require("lodash");
 
