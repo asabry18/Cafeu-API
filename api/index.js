@@ -42,19 +42,44 @@ try {
 
 const app = express();
 const port = 3001;
-app.use(
-  cors({
-    exposedHeaders: ["X-Auth-Token"],
-  }),
-);
+// app.use(
+//   cors({
+//     exposedHeaders: ["X-Auth-Token"],
+//   }),
+// );
+
+// app.use(express.json());
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept",
+//   );
+//   next();
+// });
+
+// CORS Configuration
+const allowedOrigins = ["https://resturant-project-fawn.vercel.app"];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+  exposedHeaders: ["x-auth-token"],
+}));
 
 app.use(express.json());
+
+// Allow custom headers
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept",
-  );
+  res.header("Access-Control-Allow-Origin", "https://resturant-project-fawn.vercel.app");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-auth-token");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   next();
 });
 
