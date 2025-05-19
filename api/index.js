@@ -31,6 +31,12 @@ const { getContact } = require("./endpoints/Contact/getContact");
 const { insertContact } = require("./endpoints/Contact/insertContact");
 const { deleteContact } = require("./endpoints/Contact/deleteContact");
 
+// --- CORS Allowed Origins ---
+const allowedOrigins = [
+  "https://resturant-project-fawn.vercel.app",
+  "http://localhost:3000",
+];
+
 try {
   mongoose.connect(
     "mongodb+srv://mohamedmahrous581:asabry11@cluster0.47xea.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
@@ -42,21 +48,16 @@ try {
 
 const app = express();
 const port = 3001;
+
 app.use(
   cors({
+    origin: allowedOrigins,
     exposedHeaders: ["X-Auth-Token"],
-  }),
+    credentials: true,
+  })
 );
 
 app.use(express.json());
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept",
-  );
-  next();
-});
 
 // Menu
 app.get("/menu", getMenu);
